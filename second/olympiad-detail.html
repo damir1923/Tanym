@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталь олимпиады</title>
+    <link rel="icon" href="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="../first chapter/a.css">
+    <link rel="stylesheet" href="detail.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1><img src="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" class="site-logo"
+                        alt="Tanym logo"><span>🏆 Tanym</span></h1>
+                <nav>
+                    <a href="../first chapter/a.html">Главная</a>
+                    <a href="../third/calendar.html">Календарь</a>
+                    <a href="../forth/broadcasts.html">Трансляции</a>
+                    <a href="../fifth/teachers.html">Учителям</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+                <button class="btn-reset" id="btnLogin" onclick="showLoginModal()" data-i18n="btn.login">Войти</button>
+                <button class="btn-reset" id="btnRegister" onclick="showRegisterModal()"
+                    data-i18n="btn.register">Регистрация</button>
+                <div id="userInfo" style="display:none; align-items:center;"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <button class="btn-back" onclick="history.back()" data-i18n="btn.back">← Назад</button>
+
+        <div class="detail-container" id="olympiadDetail">
+            <!-- Информация загружается здесь -->
+        </div>
+
+        <section class="history-section">
+            <h2 data-i18n="label.history">История олимпиады</h2>
+            <div id="historyContent"></div>
+        </section>
+
+        <section class="requirements-section">
+            <h2 data-i18n="label.requirements">Требования и условия участия</h2>
+            <div class="requirements-grid">
+                <div class="requirement-item">
+                    <h3 data-i18n="req.age">Возрастные ограничения</h3>
+                    <p data-i18n="req.age.desc">Олимпиада открыта для учащихся соответствующих классов</p>
+                </div>
+                <div class="requirement-item">
+                    <h3 data-i18n="req.materials">Материалы</h3>
+                    <p data-i18n="req.materials.desc">Все необходимые материалы предоставляются организаторами</p>
+                </div>
+                <div class="requirement-item">
+                    <h3 data-i18n="req.registration">Регистрация</h3>
+                    <p data-i18n="req.registration.desc">Регистрация проводится через школу или официальный портал</p>
+                </div>
+                <div class="requirement-item">
+                    <h3 data-i18n="req.certificates">Сертификаты</h3>
+                    <p data-i18n="req.certificates.desc">Все участники получают сертификат участия</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2 data-i18n="contact.heading">Контактная информация</h2>
+            <p data-i18n="contact.email">Email: <strong>info@olympiad.ru</strong></p>
+            <p data-i18n="contact.phone">Телефон: <strong>+7 (999) 123-45-67</strong></p>
+            <p data-i18n="contact.site">Сайт: <strong>www.olympiad.ru</strong></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tanym. Все права защищены.</p>
+    </footer>
+
+    <script src="../first chapter/i18n.js"></script>
+    <script src="../first chapter/auth.js"></script>
+    <script src="../first chapter/a.js"></script>
+    <script src="detail.js"></script>
+</body>
+
+</html>
