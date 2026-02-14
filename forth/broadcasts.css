@@ -1,0 +1,307 @@
+/* Стили для трансляций */
+.broadcasts-section {
+    margin-bottom: 40px;
+}
+
+.broadcasts-section h2 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.broadcast-filters {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: flex-end;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.broadcast-filters label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.broadcast-filters select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.broadcast-filters select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.broadcasts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.broadcast-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.broadcast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.broadcast-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3em;
+    position: relative;
+    overflow: hidden;
+}
+
+.broadcast-video::after {
+    content: attr(data-type);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f44336;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.4em;
+    font-weight: 600;
+}
+
+.broadcast-video.live {
+    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: inset 0 0 0 0 rgba(244, 67, 54, 0.7);
+    }
+
+    50% {
+        box-shadow: inset 0 0 0 10px rgba(244, 67, 54, 0);
+    }
+}
+
+.broadcast-info-card {
+    padding: 20px;
+}
+
+.broadcast-info-card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.broadcast-info-card p {
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.broadcast-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+
+.broadcast-tag {
+    display: inline-block;
+    background: #f0f0f0;
+    color: #667eea;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.broadcast-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: white;
+}
+
+.broadcast-status.live {
+    background: #f44336;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0.7;
+    }
+}
+
+.broadcast-status.recorded {
+    background: #4caf50;
+}
+
+.broadcast-date {
+    color: #999;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.btn-watch {
+    display: block;
+    width: 100%;
+    background: #667eea;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn-watch:hover {
+    background: #764ba2;
+}
+
+/* Информация о трансляциях */
+.broadcast-info {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.broadcast-info h2 {
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.info-card h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.info-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Рекомендуемые трансляции */
+.recommendations {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations h2 {
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recommendation-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.recommendation-item h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.recommendation-item p {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.rating {
+    color: #ffc107;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .broadcasts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .broadcast-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .broadcast-info {
+        padding: 20px;
+    }
+
+    .broadcast-video {
+        font-size: 2em;
+    }
+
+    .recommendations {
+        padding: 20px;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

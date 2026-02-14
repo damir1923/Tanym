@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="broadcasts.pageTitle">Трансляции олимпиад</title>
+    <link rel="icon" href="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="../first chapter/a.css">
+    <link rel="stylesheet" href="broadcasts.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1><img src="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" class="site-logo"
+                        alt="Tanym logo"><span data-i18n="header.title">Tanym</span></h1>
+                <nav>
+                    <a href="../first chapter/a.html">Главная</a>
+                    <a href="../third/calendar.html">Календарь</a>
+                    <a href="broadcasts.html">Трансляции</a>
+                    <a href="../fifth/teachers.html">Учителям</a>
+                    <a href="../chat.html">Чат-бот</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+                <button class="btn-reset" id="btnLogin" onclick="showLoginModal()" data-i18n="btn.login">Войти</button>
+                <button class="btn-reset" id="btnRegister" onclick="showRegisterModal()"
+                    data-i18n="btn.register">Регистрация</button>
+                <div id="userInfo" style="display:none; align-items:center;"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="broadcasts-section">
+            <h2 data-i18n="broadcasts.heading">🎥 Прямые трансляции и записи олимпиад</h2>
+
+            <div class="broadcast-filters">
+                <label data-i18n="broadcasts.filter.subject">Фильтр по предмету:</label>
+                <select id="broadcastSubject">
+                    <option value="" data-i18n="broadcasts.option.allBroadcasts">Все трансляции</option>
+                    <option value="math" data-i18n="subject.math">Математика</option>
+                    <option value="physics" data-i18n="subject.physics">Физика</option>
+                    <option value="chemistry" data-i18n="subject.chemistry">Химия</option>
+                    <option value="biology" data-i18n="subject.biology">Биология</option>
+                    <option value="literature" data-i18n="subject.literature">Литература</option>
+                    <option value="history" data-i18n="subject.history">История</option>
+                    <option value="english" data-i18n="subject.english">Английский язык</option>
+                    <option value="informatics" data-i18n="subject.informatics">Информатика</option>
+                </select>
+
+                <label data-i18n="broadcasts.filter.type">Тип:</label>
+                <select id="broadcastType">
+                    <option value="" data-i18n="broadcasts.option.allTypes">Все типы</option>
+                    <option value="live" data-i18n="broadcast.status.live">Прямые трансляции</option>
+                    <option value="recorded" data-i18n="broadcast.status.recorded">Записи</option>
+                </select>
+
+                <label data-i18n="filter.city">Город:</label>
+                <select id="broadcastCity">
+                    <option value="" data-i18n="filter.allCities">Все города</option>
+                    <option value="Алматы" data-i18n="city.almaty">Алматы</option>
+                    <option value="Нур‑Султан" data-i18n="city.nursultan">Нұр‑Сұлтан</option>
+                    <option value="Шымкент" data-i18n="city.shymkent">Шымкент</option>
+                    <option value="Караганда" data-i18n="city.karaganda">Қарағанды</option>
+                    <option value="Павлодар" data-i18n="city.pavlodar">Павлодар</option>
+                    <option value="Тараз" data-i18n="city.taraz">Тараз</option>
+                    <option value="Костанай" data-i18n="city.kostanay">Костанай</option>
+                </select>
+            </div>
+
+            <div class="broadcasts-grid" id="broadcastsGrid"></div>
+        </section>
+
+        <section class="broadcast-info">
+            <h2 data-i18n="broadcast.info.heading">ℹ️ Информация о трансляциях</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🔴 Прямые трансляции</h3>
+                    <p>Смотрите олимпиады в реальном времени. Получите полное представление о правилах, задачах и
+                        процессе решения от экспертов.</p>
+                </div>
+                <div class="info-card">
+                    <h3>📹 Записи прошлых олимпиад</h3>
+                    <p>Используйте записи для подготовки. Изучайте различные подходы к решению задач и стратегии
+                        участников.</p>
+                </div>
+                <div class="info-card">
+                    <h3>💡 Разборы решений</h3>
+                    <p>Эксперты объясняют правильные подходы к решению сложных задач и обсуждают типичные ошибки.</p>
+                </div>
+                <div class="info-card">
+                    <h3>👥 Интерактивный чат</h3>
+                    <p>Задавайте вопросы экспертам в реальном времени во время трансляции и общайтесь с другими
+                        участниками.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations">
+            <h2 data-i18n="broadcast.recommended">⭐ Рекомендуемые трансляции</h2>
+            <div class="recommendations-grid" id="recommendationsGrid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p data-i18n="footer.copyright">&copy; 2026 Олимпиадный портал. Все права защищены.</p>
+    </footer>
+
+    <script src="../first chapter/i18n.js"></script>
+    <script src="../first chapter/auth.js"></script>
+    <script src="../first chapter/a.js"></script>
+    <script src="broadcasts.js"></script>
+</body>
+
+</html>
