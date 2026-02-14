@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портал для учителей</title>
+    <link rel="icon" href="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="../first chapter/a.css">
+    <link rel="stylesheet" href="teachers.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1><img src="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" class="site-logo"
+                        alt="Tanym logo"><span data-i18n="teacher.header">Tanym - Портал для учителей</span></h1>
+                <nav>
+                    <a href="../first chapter/a.html">Главная</a>
+                    <a href="../third/calendar.html">Календарь</a>
+                    <a href="../forth/broadcasts.html">Трансляции</a>
+                    <a href="teachers.html">Учителям</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+                <button class="btn-reset" id="btnLogin" onclick="showLoginModal()" data-i18n="btn.login">Войти</button>
+                <button class="btn-reset" id="btnRegister" onclick="showRegisterModal()"
+                    data-i18n="btn.register">Регистрация</button>
+                <div id="userInfo" style="display:none; align-items:center;"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="teacher-intro">
+            <h2 data-i18n="teacher.intro.title">👨‍🏫 Добро пожаловать в портал для учителей</h2>
+            <p data-i18n="teacher.intro.desc">Здесь вы можете отслеживать достижения своих учеников, управлять
+                олимпиадами и анализировать результаты.</p>
+        </section>
+
+        <div class="teacher-dashboard">
+            <aside class="sidebar">
+                <div class="sidebar-menu">
+                    <button class="menu-btn active" onclick="showSection('my-students')"
+                        data-i18n="teacher.menu.myStudents">
+                        👥 Мои ученики
+                    </button>
+                    <button class="menu-btn" onclick="showSection('tracked-olympiads')"
+                        data-i18n="teacher.menu.tracked">
+                        📚 Отслеживаемые олимпиады
+                    </button>
+                    <button class="menu-btn" onclick="showSection('student-results')" data-i18n="teacher.menu.results">
+                        📊 Результаты учеников
+                    </button>
+                    <button class="menu-btn" onclick="showSection('upcoming-events')" data-i18n="teacher.menu.upcoming">
+                        📅 Предстоящие события
+                    </button>
+                    <button class="menu-btn" onclick="showSection('analytics')" data-i18n="teacher.menu.analytics">
+                        📈 Аналитика
+                    </button>
+                    <button class="menu-btn" onclick="showSection('resources')" data-i18n="teacher.menu.resources">
+                        📖 Материалы подготовки
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <!-- Мои ученики -->
+                <section id="my-students" class="content-section active">
+                    <h3 data-i18n="teacher.menu.myStudents">👥 Управление моими учениками</h3>
+                    <div class="add-student-form">
+                        <input type="text" id="studentName" placeholder="Имя ученика"
+                            data-i18n-placeholder="teacher.input.studentName">
+                        <select id="studentGrade">
+                            <option value="" data-i18n="teacher.select.grade">Выберите класс</option>
+                            <option value="5-6">5-6 классы</option>
+                            <option value="7-8">7-8 классы</option>
+                            <option value="9-10">9-10 классы</option>
+                            <option value="11">11 класс</option>
+                        </select>
+                        <button class="btn-primary" onclick="addStudent()" data-i18n="teacher.btn.addStudent">Добавить
+                            ученика</button>
+                    </div>
+
+                    <div class="students-grid" id="studentsList"></div>
+                </section>
+
+                <!-- Отслеживаемые олимпиады -->
+                <section id="tracked-olympiads" class="content-section">
+                    <h3 data-i18n="teacher.menu.tracked">📚 Мои отслеживаемые олимпиады</h3>
+                    <div class="olympiad-management">
+                        <button class="btn-primary" onclick="showAddOlympiadModal()">+ Добавить олимпиаду</button>
+                    </div>
+                    <div class="olympiad-list" id="trackedOlympiadsList"></div>
+                </section>
+
+                <!-- Результаты учеников -->
+                <section id="student-results" class="content-section">
+                    <h3 data-i18n="teacher.menu.results">📊 Результаты участия учеников</h3>
+                    <div class="results-filters">
+                        <select id="resultsStudent" onchange="updateResults()">
+                            <option value="" data-i18n="filter.allSubjects">Все ученики</option>
+                        </select>
+                        <select id="resultsOlympiad" onchange="updateResults()">
+                            <option value="" data-i18n="filter.allSubjects">Все олимпиады</option>
+                        </select>
+                    </div>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Ученик</th>
+                                <th>Олимпиада</th>
+                                <th>Статус</th>
+                                <th>Баллы</th>
+                                <th>Место</th>
+                                <th>Сертификат</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody"></tbody>
+                    </table>
+                </section>
+
+                <!-- Предстоящие события -->
+                <section id="upcoming-events" class="content-section">
+                    <h3 data-i18n="teacher.menu.upcoming">📅 Предстоящие события для моих учеников</h3>
+                    <div class="events-list" id="upcomingEventsList"></div>
+                </section>
+
+                <!-- Аналитика -->
+                <section id="analytics" class="content-section">
+                    <h3 data-i18n="teacher.menu.analytics">📈 Аналитика и статистика</h3>
+                    <div class="analytics-grid">
+                        <div class="stat-card">
+                            <h4>Всего учеников</h4>
+                            <p class="stat-number" id="totalStudents">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Отслеживаемые олимпиады</h4>
+                            <p class="stat-number" id="totalTracked">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Участий всего</h4>
+                            <p class="stat-number" id="totalParticipations">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Средний результат</h4>
+                            <p class="stat-number" id="avgScore">0%</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <h4>Участие по олимпиадам</h4>
+                        <div class="bar-chart" id="participationChart"></div>
+                    </div>
+                </section>
+
+                <!-- Материалы подготовки -->
+                <section id="resources" class="content-section">
+                    <h3 data-i18n="teacher.menu.resources">📖 Материалы подготовки</h3>
+                    <div class="resources-grid" id="resourcesGrid"></div>
+                </section>
+            </main>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tanym. Все права защищены.</p>
+    </footer>
+
+    <!-- Модальное окно добавления олимпиады -->
+    <div id="addOlympiadModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h4>Добавить олимпиаду для отслеживания</h4>
+            <select id="olympiadSelect">
+                <option value="">Выберите олимпиаду</option>
+            </select>
+            <button class="btn-primary" onclick="addTrackedOlympiad()">Добавить</button>
+        </div>
+    </div>
+
+    <script src="../first chapter/i18n.js"></script>
+    <script src="../first chapter/auth.js"></script>
+    <script src="../first chapter/a.js"></script>
+    <script src="teachers.js"></script>
+</body>
+
+</html>
