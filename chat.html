@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="chat.title">Чат-бот — рекомендации</title>
+    <link rel="icon" href="img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="first chapter/a.css">
+    <style>
+        .chat-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .chat-panel {
+            flex: 1;
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .messages {
+            height: 400px;
+            overflow: auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 6px;
+            background: #fafafa
+        }
+
+        .message {
+            margin: 8px 0;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .suggestions {
+            width: 320px;
+        }
+
+        .suggestions .card {
+            padding: 10px;
+            background: #fff;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd
+        }
+
+        .chat-input button {
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1><img src="img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" class="site-logo" alt="Tanym logo"><span
+                        data-i18n="header.title">Tanym</span></h1>
+                <nav>
+                    <a href="first chapter/a.html" data-i18n="nav.home">Главная</a>
+                    <a href="third/calendar.html" data-i18n="nav.calendar">Календарь</a>
+                    <a href="forth/broadcasts.html" data-i18n="nav.streams">Трансляции</a>
+                    <a href="fifth/teachers.html" data-i18n="nav.teachers">Учителям</a>
+                    <a href="chat.html" data-i18n="nav.chat">Чат-бот</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 data-i18n="chat.heading">Чат-бот рекомендаций</h2>
+        <p data-i18n="chat.desc">Расскажите о своих сильных и слабых сторонах — бот предложит проекты и пути развития.
+        </p>
+
+        <div class="chat-container">
+            <div class="chat-panel">
+                <div class="messages" id="messages"></div>
+
+                <div class="chat-input">
+                    <input id="chatInput" placeholder="Опишите ваши сильные и слабые стороны...">
+                    <button id="sendBtn">Отправить</button>
+                </div>
+                <div style="margin-top:8px">
+                    <button id="adviceBtn">Получить совет (быстро)</button>
+                </div>
+            </div>
+
+            <div class="suggestions" id="suggestions">
+                <div class="card"><strong>Как использовать</strong>
+                    <div style="font-size:0.95em; color:#666; margin-top:6px">Напишите, в чем вы сильны и что хотите
+                        развивать — бот предложит проекты, курсы и направления.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p data-i18n="footer.copyright">&copy; 2026 Олимпиадный портал. Все права защищены.</p>
+    </footer>
+
+    <script src="first chapter/i18n.js"></script>
+    <script src="chat.js"></script>
+</body>
+
+</html>
