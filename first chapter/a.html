@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanym - Главная</title>
+    <link rel="icon" href="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="a.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1>
+                        <span data-i18n="header.title">Tanym</span></h1>
+                <nav>
+                    <a href="index.html" data-i18n="nav.home">Главная</a>
+                    <a href="../third/calendar.html" data-i18n="nav.calendar">Календарь</a>
+                    <a href="../forth/broadcasts.html" data-i18n="nav.streams">Трансляции</a>
+                    <a href="../fifth/teachers.html" data-i18n="nav.teachers">Учителям</a>
+                    <a href="../chat.html" data-i18n="nav.chat">Чат-бот</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+                <button class="btn-reset" id="btnLogin" onclick="showLoginModal()" data-i18n="btn.login">Войти</button>
+                <button class="btn-reset" id="btnRegister" onclick="showRegisterModal()"
+                    data-i18n="btn.register">Регистрация</button>
+                <div id="userInfo" style="display:none; align-items:center;"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters">
+            <h2 data-i18n="filter.title">Фильтр поиска</h2>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label data-i18n="filter.subject">Предмет:</label>
+                    <select id="subject">
+                        <option value="" data-i18n="filter.allSubjects">Все предметы</option>
+                        <option value="math" data-i18n="subject.math">Математика</option>
+                        <option value="physics" data-i18n="subject.physics">Физика</option>
+                        <option value="chemistry" data-i18n="subject.chemistry">Химия</option>
+                        <option value="biology" data-i18n="subject.biology">Биология</option>
+                        <option value="literature" data-i18n="subject.literature">Литература</option>
+                        <option value="history" data-i18n="subject.history">История</option>
+                        <option value="english" data-i18n="subject.english">Английский язык</option>
+                        <option value="informatics" data-i18n="subject.informatics">Информатика</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label data-i18n="filter.grade">Класс:</label>
+                    <select id="grade">
+                        <option value="" data-i18n="filter.allGrades">Все классы</option>
+                        <option value="5-6" data-i18n="grade.5-6">5-6 классы</option>
+                        <option value="7-8" data-i18n="grade.7-8">7-8 классы</option>
+                        <option value="9-10" data-i18n="grade.9-10">9-10 классы</option>
+                        <option value="11" data-i18n="grade.11">11 класс</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label data-i18n="filter.cost">Стоимость:</label>
+                    <select id="cost">
+                        <option value="" data-i18n="filter.allCosts">Все</option>
+                        <option value="free" data-i18n="cost.free">Бесплатные</option>
+                        <option value="paid" data-i18n="cost.paid">Платные</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label data-i18n="filter.level">Уровень:</label>
+                    <select id="level">
+                        <option value="" data-i18n="filter.allLevels">Все уровни</option>
+                        <option value="world" data-i18n="level.world">Мировая</option>
+                        <option value="country" data-i18n="level.country">Государственная</option>
+                        <option value="regional" data-i18n="level.regional">Региональная</option>
+                        <option value="city" data-i18n="level.city">Городская</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label data-i18n="filter.country">Страна:</label>
+                    <select id="country">
+                        <option value="" data-i18n="filter.allCountries">Все страны</option>
+                        <option value="kazakhstan" data-i18n="country.kazakhstan">Казахстан</option>
+                    </select>
+                </div>
+
+                <div class="filter-group" id="cityFilter" style="display:none;">
+                    <label data-i18n="filter.city">Город:</label>
+                    <select id="city">
+                        <option value="" data-i18n="filter.allCities">Все города</option>
+                        <option value="astana" data-i18n="city.astana">Астана</option>
+                        <option value="nursultan" data-i18n="city.nursultan">Нур-Султан</option>
+                        <option value="almaty" data-i18n="city.almaty">Алматы</option>
+                        <option value="shymkent" data-i18n="city.shymkent">Шымкент</option>
+                        <option value="karaganda" data-i18n="city.karaganda">Караганда</option>
+                        <option value="aktobe" data-i18n="city.aktobe">Актобе</option>
+                        <option value="pavlodar" data-i18n="city.pavlodar">Павлодар</option>
+                        <option value="taraz" data-i18n="city.taraz">Тараз</option>
+                        <option value="kostanay" data-i18n="city.kostanay">Костанай</option>
+                        <option value="oral" data-i18n="city.oral">Орал</option>
+                        <option value="semey" data-i18n="city.semey">Семей</option>
+                        <option value="oskemen" data-i18n="city.oskemen">Өскемен</option>
+                    </select>
+                </div>
+
+                <button class="btn-reset" onclick="resetFilters()" data-i18n="filter.reset">Сбросить фильтры</button>
+            </div>
+        </section>
+
+        <section class="olympiads">
+            <h2 data-i18n="section.olympiads">Доступные олимпиады</h2>
+            <div class="olympiad-grid" id="olympiadGrid">
+                <!-- Олимпиады загружаются здесь -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p data-i18n="footer.copyright">&copy; 2026 Олимпиадный портал. Все права защищены.</p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="auth.js"></script>
+    <script src="a.js"></script>
+
+    <!-- Login/Register modals -->
+    <div id="loginModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h4 data-i18n="header.loginForm">Вход</h4>
+            <input id="loginUsername" data-i18n-placeholder="form.login" placeholder="Логин"
+                style="width:100%; padding:10px; margin-bottom:10px;" />
+            <input id="loginPassword" type="password" data-i18n-placeholder="form.password" placeholder="Пароль"
+                style="width:100%; padding:10px; margin-bottom:10px;" />
+            <button class="btn-primary" onclick="loginUserFromUI()" data-i18n="btn.login">Войти</button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterModal()">&times;</span>
+            <h4 data-i18n="header.registerForm">Регистрация</h4>
+            <input id="regUsername" data-i18n-placeholder="form.login" placeholder="Логин"
+                style="width:100%; padding:10px; margin-bottom:10px;" />
+            <input id="regPassword" type="password" data-i18n-placeholder="form.password" placeholder="Пароль"
+                style="width:100%; padding:10px; margin-bottom:10px;" />
+            <label style="display:block; margin-bottom:8px;" data-i18n="form.chooseRole">Роль:</label>
+            <select id="regRole" style="width:100%; padding:10px; margin-bottom:12px;">
+                <option value="student" data-i18n="role.student">Ученик</option>
+                <option value="teacher" data-i18n="role.teacher">Учитель</option>
+            </select>
+            <button class="btn-primary" onclick="registerUserFromUI()"
+                data-i18n="btn.register">Зарегистрироваться</button>
+        </div>
+    </div>
+</body>
+
+</html>
