@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="calendar.pageTitle">Календарь олимпиад</title>
+    <link rel="icon" href="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="../first chapter/a.css">
+    <link rel="stylesheet" href="calendar.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div>
+                <h1><img src="../img/WhatsApp Image 2026-02-13 at 15.07.21.jpeg" class="site-logo"
+                        alt="Tanym logo"><span data-i18n="header.title">Tanym</span></h1>
+                <nav>
+                    <a href="../first chapter/a.html">Главная</a>
+                    <a href="calendar.html">Календарь</a>
+                    <a href="../forth/broadcasts.html">Трансляции</a>
+                    <a href="../fifth/teachers.html">Учителям</a>
+                </nav>
+            </div>
+            <div class="user-actions">
+                <div class="language-selector">
+                    <span class="language-icon">🌍</span>
+                    <select id="languageSelector" onchange="setLanguage(this.value)">
+                        <option value="ru" data-i18n="lang.russian">Русский</option>
+                        <option value="kk" data-i18n="lang.kazakh">Қазақша</option>
+                        <option value="en" data-i18n="lang.english">English</option>
+                    </select>
+                </div>
+                <button class="btn-reset" id="btnLogin" onclick="showLoginModal()" data-i18n="btn.login">Войти</button>
+                <button class="btn-reset" id="btnRegister" onclick="showRegisterModal()"
+                    data-i18n="btn.register">Регистрация</button>
+                <div id="userInfo" style="display:none; align-items:center;"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="calendar">
+            <h2 data-i18n="calendar.heading">📅 Календарь олимпиад 2026</h2>
+
+            <div class="calendar-controls">
+                <button onclick="previousMonth()" class="btn-nav" data-i18n="btn.prevMonth">← Предыдущий месяц</button>
+                <h3 id="monthYear"></h3>
+                <button onclick="nextMonth()" class="btn-nav" data-i18n="btn.nextMonth">Следующий месяц →</button>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+
+        <section class="events-timeline">
+            <h2 data-i18n="calendar.upcoming">📍 Ближайшие события</h2>
+            <div class="timeline" id="timelineEvents"></div>
+        </section>
+
+        <section class="all-events">
+            <h2 data-i18n="calendar.allEvents">📋 Все события по датам</h2>
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="table.startDate">Дата начала</th>
+                        <th data-i18n="table.deadline">Дедлайн</th>
+                        <th data-i18n="table.olympiad">Олимпиада</th>
+                        <th data-i18n="table.subject">Предмет</th>
+                        <th data-i18n="table.level">Уровень</th>
+                    </tr>
+                </thead>
+                <tbody id="eventsList"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tanym. Все права защищены.</p>
+    </footer>
+
+    <script src="../first chapter/i18n.js"></script>
+    <script src="../first chapter/auth.js"></script>
+    <script src="../first chapter/a.js"></script>
+    <script src="calendar.js"></script>
+</body>
+
+</html>
